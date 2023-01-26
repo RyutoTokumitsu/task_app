@@ -1,0 +1,53 @@
+<h3>スケジュール編集</h3>
+
+<%= form_with(model: @post, local: true) do |form| %>
+
+  <% if form.object.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        エラーが <%= form.object.errors.count %> 個あります。
+      </div>
+      <ul>
+      <% form.object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<%= form_with model: @post do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :title ,"タイトル" %></th>
+      <td><%= f.text_field :title %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :start_date ,"開始日" %></th>
+      <td><%= f.date_field :start_date %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :end_date ,"終了日" %></th>
+      <td><%= f.date_field :end_date %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :all_day ,"終日" %></th>
+      <td><%= f.check_box :all_day %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :memory ,"スケジュールメモ"%></th>
+      <td><%= f.text_field :memory %></td>
+    </tr>
+  </table>
+
+  <div>
+    <ul>
+      <li><%= f.submit "登録完了する" %></li>
+      <li><%= link_to "スケジュール一覧に戻る", :posts %></li>
+    </ul>
+  </div>
+<% end %>
