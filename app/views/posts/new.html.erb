@@ -1,10 +1,10 @@
-<h3>スケジュール編集</h3>
+<h3>スケジュール新規作成</h3>
 
-<%= form_with(model: @user, local: true) do |form| %>
+<%= form_with(model: @post, local: true) do |form| %>
 
   <% if form.object.errors.any? %>
-    <div id="error_explanation">
-      <div class="alert alert-danger">
+    <div>
+      <div>
         エラーが <%= form.object.errors.count %> 個あります。 
       </div>
       <ul>
@@ -14,9 +14,10 @@
       </ul>
     </div>
   <% end %>
+
 <% end %>
 
-<%= form_with model: @user do |f| %>
+<%= form_with model: @post do |f| %>
   <table>
     <tr>
       <th><%= f.label :title ,"タイトル" %></th>
@@ -47,7 +48,7 @@
   <div>
     <ul>
       <li><%= f.submit "登録完了する" %></li>
-      <li><%= link_to "スケジュール一覧に戻る", :users %></li>
+      <li><%= link_to "スケジュール一覧に戻る", :posts %></li>
     </ul>
   </div>
 <% end %>

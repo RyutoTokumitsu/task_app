@@ -20,22 +20,22 @@
   </thead>
 
   <tbody>
-    <% if @users.count > 0 %>
-      <% @users.each do |user| %>
+    <% if @posts.count > 0 %>
+      <% @posts.each do |post| %>
         <tr>
-          <td><%= user.id %></td>
-          <td><%= user.title %></td>
-          <td><%= user.start_date.to_s(:datetime_jp) %></td>
-          <td><%= user.end_date.to_s(:datetime_jp) %></td>
+          <td><%= post.id %></td>
+          <td><%= post.title %></td>
+          <td><%= post.start_date.to_s(:datetime_jp) %></td>
+          <td><%= post.end_date.to_s(:datetime_jp) %></td>
           <td>
-            <% if user.all_day %>
+            <% if post.all_day %>
               <strong>◯</strong>
             <% end %>
           </td>
-          <td><%= user.created_at.to_s(:updatetime_jp) %></td>
-          <td><%= link_to "確認", user %></td>
-          <td><%= link_to "編集", [:edit,user] %></td>
-          <td><%= button_to "削除", user_path(user), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %></td>
+          <td><%= post.created_at.to_s(:updatetime_jp) %></td>
+          <td><%= link_to "確認", post %></td>
+          <td><%= link_to "編集", [:edit,post] %></td>
+          <td><%= button_to "削除", post_path(post), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %></td>
         </tr>
       <% end %>
     <% else %>
@@ -44,9 +44,9 @@
   </tbody>
 </table>
 
-<p><%= link_to "スケジュール新規登録", new_user_path %></p>
+<p><%= link_to "スケジュール新規登録", new_post_path %></p>
 
 <footer>
   <p>今日は<%= Date.today %>です</p>
-  <p>予定の総数は<%= @users.count %>です</p>
+  <p>予定の総数は<%= @posts.count %>です</p>
 </footer>
